@@ -11,11 +11,13 @@ class LinkedList:
         self.tail = new_node
         self.length = 1
 
+
     def print_list(self):
         temp = self.head
         while temp is not None:
             print(temp.value)
             temp = temp.next
+
 
     def append(self, value):
         new_node = Node(value)
@@ -27,6 +29,7 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
         return True
+
 
     def pop(self):
         if (self.length == 0):
@@ -44,6 +47,7 @@ class LinkedList:
             self.tail = None
         return temp
 
+
     def prepend(self, value):
         new_node = Node(value)
         if self.length == 0:
@@ -54,6 +58,7 @@ class LinkedList:
             self.head = new_node
         self.length += 1
         return True
+
 
     def pop_first(self):
         if self.length == 0 :
@@ -66,6 +71,7 @@ class LinkedList:
             self.tail = None
         return temp
 
+
     def get(self,index):
         if index < 0 or index >= self.length:
             return None
@@ -74,12 +80,14 @@ class LinkedList:
             temp = temp.next
         return temp
 
+
     def set_value(self,index,value):
         temp = self.get(index)
         if temp:
             temp.value = value
             return True
         return False
+
 
     def insert(self, index, value):
         if index < 0 or index > self.length:
@@ -111,9 +119,23 @@ class LinkedList:
         return temp
 
 
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+        
+
 my_linked_list = LinkedList(0)
 
-my_linked_list.append(1)
-my_linked_list.insert(2,23)
+my_linked_list.append(2)
+my_linked_list.append(23)
+my_linked_list.reverse()    
 
 my_linked_list.print_list()
