@@ -20,7 +20,7 @@ class LinkedList:
 
 
     def append(self, value):
-        new_node = Node(value)
+        new_node = Node(value) # create new node
         if (self.head is None):
             self.head = new_node
             self.tail = new_node
@@ -49,11 +49,13 @@ class LinkedList:
 
 
     def prepend(self, value):
-        new_node = Node(value)
-        if self.length == 0:
+        new_node = Node(value)  # create new node
+        if self.length == 0: # if LL doesn't have any node
+            # set same node as head & tail
             self.head = new_node
             self.tail = new_node
         else:
+            # put the new node before the actual LL head
             new_node.next = self.head
             self.head = new_node
         self.length += 1
